@@ -69,3 +69,22 @@ CREATE TABLE historico_ia (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chamado_id) REFERENCES chamados(id) ON DELETE CASCADE
 );
+
+-- ------------------------------------------------------------
+-- DADOS INICIAIS (seed)
+-- ------------------------------------------------------------
+
+-- Categorias-padrão (os mesmos nomes que a IA usa para classificar).
+INSERT INTO categorias (nome, descricao) VALUES
+('hardware', 'Problemas físicos: computador, impressora, periféricos'),
+('software', 'Programas, sistemas, aplicativos e erros de software'),
+('rede',     'Internet, Wi-Fi, conexão, VPN'),
+('acesso',   'Login, senha, permissões de acesso'),
+('outro',    'Demais assuntos não classificados');
+
+-- Usuário ADMINISTRADOR inicial.
+--   Email: admin@helpdesk.com
+--   Senha: admin123   (o valor abaixo é o hash bcrypt dessa senha)
+INSERT INTO usuarios (nome, email, senha, tipo) VALUES
+('Administrador', 'admin@helpdesk.com',
+ '$2y$10$Ncj0FFNRQO4ffh8Invu4GObPF9ljWma2qGACvgbXMdMA/S918BmG6', 'admin');

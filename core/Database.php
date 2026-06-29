@@ -17,6 +17,8 @@ class Database{
         try {
             self::$conexao = new PDO($dsn, $config['usuario'], $config['senha']);
             self::$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Resultados vêm como array associativo: $linha['nome'] em vez de $linha[0].
+            self::$conexao->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             return self::$conexao;
         } catch (PDOException $e) {
             die("Erro na conexão com o banco de dados: " . $e->getMessage());
