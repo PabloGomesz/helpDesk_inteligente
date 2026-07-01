@@ -1,4 +1,4 @@
-<?php $titulo = 'Login'; require __DIR__ . '/../partials/header.php'; ?>
+<?php $titulo = 'Login'; $bodyClass = 'auth-page'; require __DIR__ . '/../partials/header.php'; ?>
 
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -7,9 +7,9 @@
                 <div class="card-body p-4">
 
                     <div class="text-center mb-4">
-                        <i class="bi bi-headset text-primary" style="font-size:3rem"></i>
-                        <h4 class="mt-2 fw-bold">HelpDesk<span class="text-warning">IA</span></h4>
-                        <p class="text-muted small">Acesse sua conta</p>
+                        <span class="auth-logo mb-3"><i class="bi bi-headset"></i></span>
+                        <h4 class="fw-bold mb-1">HelpDesk<span class="text-primary">IA</span></h4>
+                        <p class="text-muted small mb-0">Acesse sua conta</p>
                     </div>
 
                     <?php if (!empty($_SESSION['erro'])): ?>

@@ -16,7 +16,7 @@ require __DIR__ . '/../partials/navbar.php';
 
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <form method="POST" action="<?= BASE_URL ?>chamado/salvar">
+                    <form method="POST" action="<?= BASE_URL ?>chamado/salvar" id="formChamado">
                         <div class="mb-3">
                             <label class="form-label">Título *</label>
                             <input type="text" name="titulo" class="form-control" required
@@ -52,7 +52,12 @@ require __DIR__ . '/../partials/navbar.php';
                         </div>
 
                         <div class="d-flex gap-2">
-                            <button class="btn btn-primary"><i class="bi bi-send"></i> Abrir chamado</button>
+                            <button class="btn btn-primary" id="btnEnviar">
+                                <span id="btnTexto"><i class="bi bi-send"></i> Abrir chamado</span>
+                                <span id="btnCarregando" class="d-none">
+                                    <span class="spinner-border spinner-border-sm me-1"></span> Analisando com IA...
+                                </span>
+                            </button>
                             <a href="<?= BASE_URL ?>chamado/index" class="btn btn-outline-secondary">Cancelar</a>
                         </div>
                     </form>
@@ -61,5 +66,15 @@ require __DIR__ . '/../partials/navbar.php';
         </div>
     </div>
 </div>
+
+<script>
+// Ao enviar, troca o botão por um spinner e bloqueia novos cliques.
+document.getElementById('formChamado').addEventListener('submit', function () {
+    const btn = document.getElementById('btnEnviar');
+    btn.disabled = true;
+    document.getElementById('btnTexto').classList.add('d-none');
+    document.getElementById('btnCarregando').classList.remove('d-none');
+});
+</script>
 
 <?php require __DIR__ . '/../partials/footer.php'; ?>

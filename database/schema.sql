@@ -1,8 +1,3 @@
--- ============================================================
--- HelpDesk Inteligente - Schema do Banco de Dados
--- Rode este arquivo UMA vez no phpMyAdmin ou via linha de comando:
---   mysql -u root -p < database/schema.sql
--- ============================================================
 
 CREATE DATABASE IF NOT EXISTS helpdesk_ai_db
     CHARACTER SET utf8mb4
@@ -10,11 +5,6 @@ CREATE DATABASE IF NOT EXISTS helpdesk_ai_db
 
 USE helpdesk_ai_db;
 
--- ------------------------------------------------------------
--- Ordem importa por causa das FOREIGN KEYS:
--- usuarios e categorias primeiro; chamados depois; por fim
--- comentarios e historico_ia (que referenciam chamados).
--- ------------------------------------------------------------
 
 CREATE TABLE usuarios (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -40,7 +30,7 @@ CREATE TABLE chamados (
     usuario_id INT,
     tecnico_id INT NULL,
     categoria_id INT NULL,
-    classificacao_ia JSON,              -- Armazena classificacao da IA
+    classificacao_ia JSON,             
     solucao_sugerida_ia TEXT,
     resolvido_em DATETIME,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

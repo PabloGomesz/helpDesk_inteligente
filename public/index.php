@@ -18,6 +18,9 @@ spl_autoload_register(function ($classe) {
     }
 });
 
+// Carrega as variáveis do .env (chave da IA, etc.) antes de tudo.
+Env::carregar(__DIR__ . '/../.env');
+
 // 3) Entrega o controle para o Router, que vai ler a URL e chamar quem deve.
 $router = new Router();
 $router->run();

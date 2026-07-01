@@ -81,10 +81,16 @@ require __DIR__ . '/../partials/navbar.php';
                             <td><span class="badge bg-<?= corStatus($c['status']) ?>"><?= rotuloStatus($c['status']) ?></span></td>
                             <td><small><?= e($c['usuario_nome'] ?? '—') ?></small></td>
                             <td><small><?= date('d/m/Y', strtotime($c['criado_em'])) ?></small></td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="<?= BASE_URL ?>chamado/visualizar/<?= $c['id'] ?>" class="btn btn-sm btn-outline-secondary">
                                     <i class="bi bi-eye"></i>
                                 </a>
+                                <?php if ($_SESSION['usuario']['tipo'] === 'admin'): ?>
+                                    <a href="<?= BASE_URL ?>chamado/deletar/<?= $c['id'] ?>" class="btn btn-sm btn-outline-danger"
+                                       onclick="return confirm('Excluir o chamado #<?= $c['id'] ?>?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; endif; ?>

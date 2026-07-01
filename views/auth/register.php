@@ -1,4 +1,4 @@
-<?php $titulo = 'Cadastro'; require __DIR__ . '/../partials/header.php'; ?>
+<?php $titulo = 'Cadastro'; $bodyClass = 'auth-page'; require __DIR__ . '/../partials/header.php'; ?>
 
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -7,9 +7,9 @@
                 <div class="card-body p-4">
 
                     <div class="text-center mb-4">
-                        <i class="bi bi-person-plus text-primary" style="font-size:3rem"></i>
-                        <h4 class="mt-2 fw-bold">Criar conta</h4>
-                        <p class="text-muted small">Cadastre-se para abrir chamados</p>
+                        <span class="auth-logo mb-3"><i class="bi bi-person-plus"></i></span>
+                        <h4 class="fw-bold mb-1">Criar conta</h4>
+                        <p class="text-muted small mb-0">Cadastre-se para abrir chamados</p>
                     </div>
 
                     <?php if (!empty($_SESSION['erro'])): ?>

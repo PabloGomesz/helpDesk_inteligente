@@ -1,1 +1,5 @@
 .env
+
+# Uploads enviados pelos usuários
+public/uploads/*
+!public/uploads/.gitkeep

@@ -23,7 +23,8 @@ class Chamado
             ':descricao'    => $dados['descricao'],
             ':prioridade'   => $dados['prioridade'] ?? 'media',
             ':usuario_id'   => $dados['usuario_id'],
-            ':categoria_id' => $dados['categoria_id'] ?? null,
+            // Categoria vazia ('') vira NULL para não quebrar a foreign key.
+            ':categoria_id' => empty($dados['categoria_id']) ? null : $dados['categoria_id'],
         ]);
         return $this->db->lastInsertId();
     }
@@ -141,7 +142,7 @@ class Chamado
             ':classificacao' => $classificacaoJson,
             ':solucao'       => $solucao,
             ':prioridade'    => $prioridade,
-            ':categoria_id'  => $categoria_id,
+            ':categoria_id'  => empty($categoria_id) ? null : $categoria_id,
             ':id'            => $id,
         ]);
     }

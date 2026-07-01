@@ -203,12 +203,14 @@ class ChamadoController extends Controller
         }
 
         // Mudança de status e atribuição: só técnico/admin.
+        // A atribuição vem ANTES (ela força "em_andamento"); o status escolhido
+        // é aplicado DEPOIS para que a escolha do técnico sempre prevaleça.
         if (in_array($usuario['tipo'], ['tecnico', 'admin'])) {
-            if (!empty($_POST['status'])) {
-                $this->model('Chamado')->mudarStatus($id, $_POST['status']);
-            }
             if (!empty($_POST['tecnico_id'])) {
                 $this->model('Chamado')->atribuirTecnico($id, $_POST['tecnico_id']);
+            }
+            if (!empty($_POST['status'])) {
+                $this->model('Chamado')->mudarStatus($id, $_POST['status']);
             }
         }
 

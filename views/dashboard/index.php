@@ -19,7 +19,15 @@ foreach ($stats['por_categoria'] as $c) {
 ?>
 
 <div class="container">
-    <h3 class="mb-4"><i class="bi bi-speedometer2"></i> Dashboard</h3>
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+        <div>
+            <h3 class="mb-1">Olá, <?= e(explode(' ', $_SESSION['usuario']['nome'])[0]) ?> 👋</h3>
+            <p class="text-muted mb-0">Visão geral dos chamados de suporte</p>
+        </div>
+        <a href="<?= BASE_URL ?>chamado/criar" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Novo Chamado
+        </a>
+    </div>
 
     <!-- Cards de resumo -->
     <div class="row g-3 mb-4">
@@ -94,7 +102,7 @@ foreach ($stats['por_categoria'] as $c) {
     </div>
 
     <!-- Últimos chamados -->
-    <div class="card shadow-sm">
+    <div class="card shadow-sm mb-5">
         <div class="card-header bg-white fw-bold d-flex justify-content-between align-items-center">
             <span>Últimos chamados</span>
             <a href="<?= BASE_URL ?>chamado/index" class="btn btn-sm btn-outline-primary">Ver todos</a>
